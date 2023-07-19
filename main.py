@@ -4,7 +4,7 @@ import uvicorn
 import numpy as np
 from io import BytesIO
 from PIL import Image
-import tensorflow as tf
+from tensorflow.keras.models import load_model
 
 app = FastAPI()
 
@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("saved_models/v8-75/trips.h5")
+MODEL = load_model("saved_models/v8-75/trips.h5")
 
 CLASS_NAMES = ["Planta Enferma Trips", "Planta Saludable"]
 
