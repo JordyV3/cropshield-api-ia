@@ -8,25 +8,21 @@ import tensorflow as tf
 
 app = FastAPI()
 
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-MODEL = tf.keras.models.load_model("saved_models/v8-75")
+MODEL = tf.keras.models.load_model("saved_models/v8-75/trips.h5")
 
 CLASS_NAMES = ["Planta Enferma Trips", "Planta Saludable"]
 
 
 @app.get("/ping")
-async def ping():
+def ping():
     return "Detector de Trips"
 
 
