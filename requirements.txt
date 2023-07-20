@@ -1,6 +1,6 @@
 numpy
 uvicorn
-tensorflow
+tensorflow==2.12.*
 gunicorn
 python-multipart
 matplotlib
